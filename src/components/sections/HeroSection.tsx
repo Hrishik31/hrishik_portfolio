@@ -92,7 +92,7 @@ const HeroSection = () => (
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
             {/* Chip outline */}
             <rect x="100" y="100" width="200" height="200" rx="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.4" />
-            <rect x="120" y="120" width="160" height="160" rx="4" fill="hsl(var(--primary))" opacity="0.05" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.3" />
+            <rect x="120" y="120" width="160" height="160" rx="4" fill="hsl(var(--primary))" opacity="0.05" stroke="hsl(var(--primary))" strokeWidth="0.5" />
             {/* Pins */}
             {Array.from({ length: 8 }).map((_, i) => (
               <g key={`top-${i}`}>
