@@ -1,6 +1,7 @@
 import SectionHeader from "@/components/SectionHeader";
 import TechCard from "@/components/TechCard";
 import { motion } from "framer-motion";
+import labPhoto from "@/assets/internship-lab.jpg";
 
 const highlights = [
   "Tuned VHF cavity duplexer — 1.32 dB insertion loss, 120 dB isolation at 146.7 MHz",
@@ -26,36 +27,51 @@ const ExperienceSection = () => (
         subtitle="RF & Microwave Engineering Intern at Aatash Norcontrol Ltd., Ahmedabad"
       />
       <div className="grid md:grid-cols-2 gap-8">
-        <TechCard>
-          <span className="text-label">May 2025 — Jul 2025</span>
-          <h3 className="text-xl font-semibold mt-3 mb-4 text-foreground">Key Achievements</h3>
-          <ul className="space-y-3">
-            {highlights.map((h, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: 10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="text-sm text-foreground/70 flex gap-2"
-              >
-                <span className="text-primary mt-1 shrink-0">›</span>
-                <span className="font-mono">{h}</span>
-              </motion.li>
-            ))}
-          </ul>
-        </TechCard>
-        <TechCard delay={0.1}>
-          <span className="text-label">Technologies Used</span>
-          <h3 className="text-xl font-semibold mt-3 mb-4 text-foreground">RF Measurement Stack</h3>
-          <div className="flex flex-wrap gap-2">
-            {techs.map((t) => (
-              <span key={t} className="px-3 py-1.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">
-                {t}
-              </span>
-            ))}
+        <div className="space-y-8">
+          <TechCard>
+            <span className="text-label">May 2025 — Jul 2025</span>
+            <h3 className="text-xl font-semibold mt-3 mb-4 text-foreground">Key Achievements</h3>
+            <ul className="space-y-3">
+              {highlights.map((h, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: 10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="text-sm text-foreground/70 flex gap-2"
+                >
+                  <span className="text-primary mt-1 shrink-0">›</span>
+                  <span className="font-mono">{h}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </TechCard>
+          <TechCard delay={0.1}>
+            <span className="text-label">Technologies Used</span>
+            <h3 className="text-xl font-semibold mt-3 mb-4 text-foreground">RF Measurement Stack</h3>
+            <div className="flex flex-wrap gap-2">
+              {techs.map((t) => (
+                <span key={t} className="px-3 py-1.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </TechCard>
+        </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="flex items-center"
+        >
+          <div className="rounded-xl overflow-hidden border border-foreground/10 glow-primary">
+            <img src={labPhoto} alt="12ft antenna S-parameter testing at Aatash Norcontrol Lab" className="w-full h-full object-cover" />
+            <div className="p-3 bg-card">
+              <p className="text-xs font-mono text-muted-foreground text-center">12ft antenna S-parameter testing</p>
+            </div>
           </div>
-        </TechCard>
+        </motion.div>
       </div>
     </div>
   </section>
