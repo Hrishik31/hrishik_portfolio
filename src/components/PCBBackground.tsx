@@ -2,48 +2,42 @@ const PCBBackground = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     <div className="absolute inset-0 grid-bg opacity-50" />
     <div className="absolute inset-0 scanline opacity-30" />
+    {/* Arc Reactor Background */}
     <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="traceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
-          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
-        </linearGradient>
+        <radialGradient id="bgArcGlow" cx="50%" cy="40%" r="40%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.06" />
+          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.02" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+        </radialGradient>
       </defs>
-      {/* PCB Traces */}
-      <path
-        d="M0,200 L200,200 L200,400 L500,400 L500,300 L800,300 L800,500 L1200,500 L1200,200 L1400,200"
-        fill="none"
-        stroke="url(#traceGrad)"
-        strokeWidth="1"
-        strokeDasharray="8 4"
-        className="animate-trace"
-      />
-      <path
-        d="M0,600 L300,600 L300,800 L600,800 L600,700 L900,700 L900,900 L1400,900"
-        fill="none"
-        stroke="url(#traceGrad)"
-        strokeWidth="1"
-        strokeDasharray="8 4"
-        className="animate-trace"
-        style={{ animationDelay: "5s" }}
-      />
-      {/* Node dots */}
-      {[
-        [200, 200], [200, 400], [500, 400], [500, 300], [800, 300], [800, 500],
-        [300, 600], [300, 800], [600, 800], [600, 700], [900, 700],
-      ].map(([cx, cy], i) => (
-        <circle
-          key={i}
-          cx={cx}
-          cy={cy}
-          r="3"
-          fill="hsl(var(--primary))"
-          opacity="0.3"
-          className="animate-pulse-glow"
-          style={{ animationDelay: `${i * 0.3}s` }}
-        />
-      ))}
+      {/* Ambient glow */}
+      <rect width="100%" height="100%" fill="url(#bgArcGlow)" />
+      {/* Large outer rings */}
+      <circle cx="50%" cy="40%" r="300" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.08"
+        strokeDasharray="12 8" className="animate-arc-spin" />
+      <circle cx="50%" cy="40%" r="220" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.06"
+        strokeDasharray="8 12" className="animate-arc-spin-reverse" />
+      <circle cx="50%" cy="40%" r="150" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.3" opacity="0.1"
+        strokeDasharray="4 10" className="animate-arc-spin" />
+      {/* Energy nodes */}
+      {[0, 60, 120, 180, 240, 300].map((deg, i) => {
+        const rad = (deg * Math.PI) / 180;
+        const cx = 50;
+        const cy = 40;
+        return (
+          <circle
+            key={i}
+            cx={`${cx + 20 * Math.cos(rad)}%`}
+            cy={`${cy + 20 * Math.sin(rad)}%`}
+            r="2"
+            fill="hsl(var(--primary))"
+            opacity="0.2"
+            className="animate-pulse-glow"
+            style={{ animationDelay: `${i * 0.5}s` }}
+          />
+        );
+      })}
     </svg>
   </div>
 );

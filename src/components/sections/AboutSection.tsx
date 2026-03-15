@@ -1,11 +1,12 @@
 import SectionHeader from "@/components/SectionHeader";
 import TechCard from "@/components/TechCard";
+import heroPhoto from "@/assets/hrishik-hero.jpeg";
 
 const domains = [
   {
     title: "RF & Microwave Systems",
     items: ["Vector Network Analyzers", "RF Signal Generators", "Spectrum Analyzers", "RF Power Sensors"],
-    note: "Duplexer tuning, antenna S-parameter measurement, high-power RF testing.",
+    note: "Duplexer tuning, antenna S-parameter measurement, and high-power RF testing.",
     accent: "primary",
   },
   {
@@ -30,9 +31,15 @@ const AboutSection = () => (
         title="About Me"
         subtitle="B.Tech in Electronics & Communication Engineering at Pandit Deendayal Energy University with a CGPA of 9.32, pursuing a Minor in Computational Data Science."
       />
-      <p className="text-foreground/60 leading-relaxed max-w-3xl mb-16">
-        My academic journey revolves around a simple idea: <span className="text-foreground font-medium">Modern electronics is no longer just hardware — it is hardware enhanced by intelligence.</span>
-      </p>
+
+      <div className="flex flex-col md:flex-row gap-10 mb-16 items-center">
+        <div className="w-48 h-48 md:w-56 md:h-56 rounded-xl overflow-hidden border-2 border-primary/20 glow-primary shrink-0">
+          <img src={heroPhoto} alt="Hrishik Patel" className="w-full h-full object-cover" />
+        </div>
+        <p className="text-foreground/60 leading-relaxed max-w-3xl">
+          Hrishik Patel is an Electronics & Communication Engineering student whose academic journey revolves around a simple idea: <span className="text-foreground font-medium">Modern electronics is no longer just hardware — it is hardware enhanced by intelligence.</span> His work spans RF measurement labs, semiconductor chip design, and deep learning models applied to real-world engineering problems. He brings a disciplined approach shaped by competitive table tennis and a passion for technology-driven storytelling through movies and web series.
+        </p>
+      </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {domains.map((d, i) => (

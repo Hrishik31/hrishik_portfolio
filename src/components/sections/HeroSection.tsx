@@ -6,14 +6,6 @@ const HeroSection = () => (
     <div className="max-w-7xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
       {/* Left */}
       <div>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-label mb-6 block"
-        >
-          Engineering Portfolio
-        </motion.span>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,7 +71,7 @@ const HeroSection = () => (
           </Button>
         </motion.div>
       </div>
-      {/* Right — RF Waveform Visualization */}
+      {/* Right — Arc Reactor Visualization */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -87,50 +79,64 @@ const HeroSection = () => (
         className="hidden md:flex items-center justify-center"
       >
         <div className="relative w-full aspect-square max-w-md">
-          {/* Chip visualization */}
-          <div className="absolute inset-0 border border-foreground/10 rounded-xl grid-bg" />
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-            {/* Chip outline */}
-            <rect x="100" y="100" width="200" height="200" rx="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.4" />
-            <rect x="120" y="120" width="160" height="160" rx="4" fill="hsl(var(--primary))" opacity="0.05" stroke="hsl(var(--primary))" strokeWidth="0.5" />
-            {/* Pins */}
-            {Array.from({ length: 8 }).map((_, i) => (
-              <g key={`top-${i}`}>
-                <line x1={130 + i * 20} y1={100} x2={130 + i * 20} y2={70} stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.3" />
-                <circle cx={130 + i * 20} cy={68} r="2" fill="hsl(var(--primary))" opacity="0.5" className="animate-pulse-glow" style={{ animationDelay: `${i * 0.2}s` }} />
-              </g>
-            ))}
-            {Array.from({ length: 8 }).map((_, i) => (
-              <g key={`bot-${i}`}>
-                <line x1={130 + i * 20} y1={300} x2={130 + i * 20} y2={330} stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.3" />
-                <circle cx={130 + i * 20} cy={332} r="2" fill="hsl(var(--primary))" opacity="0.5" className="animate-pulse-glow" style={{ animationDelay: `${i * 0.2 + 0.1}s` }} />
-              </g>
-            ))}
-            {Array.from({ length: 8 }).map((_, i) => (
-              <g key={`left-${i}`}>
-                <line y1={130 + i * 20} x1={100} y2={130 + i * 20} x2={70} stroke="hsl(var(--secondary))" strokeWidth="1" opacity="0.3" />
-                <circle cy={130 + i * 20} cx={68} r="2" fill="hsl(var(--secondary))" opacity="0.5" className="animate-pulse-glow" style={{ animationDelay: `${i * 0.2 + 0.2}s` }} />
-              </g>
-            ))}
-            {Array.from({ length: 8 }).map((_, i) => (
-              <g key={`right-${i}`}>
-                <line y1={130 + i * 20} x1={300} y2={130 + i * 20} x2={330} stroke="hsl(var(--secondary))" strokeWidth="1" opacity="0.3" />
-                <circle cy={130 + i * 20} cx={332} r="2" fill="hsl(var(--secondary))" opacity="0.5" className="animate-pulse-glow" style={{ animationDelay: `${i * 0.2 + 0.3}s` }} />
-              </g>
-            ))}
+            {/* Outer glow */}
+            <defs>
+              <radialGradient id="arcGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+                <stop offset="70%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+              </radialGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            <circle cx="200" cy="200" r="180" fill="url(#arcGlow)" />
+            {/* Outer ring */}
+            <circle cx="200" cy="200" r="160" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.3" />
+            <circle cx="200" cy="200" r="155" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.15" />
+            {/* Rotating segments outer */}
+            {Array.from({ length: 12 }).map((_, i) => {
+              const angle = (i * 30) * Math.PI / 180;
+              const x1 = 200 + 140 * Math.cos(angle);
+              const y1 = 200 + 140 * Math.sin(angle);
+              const x2 = 200 + 160 * Math.cos(angle);
+              const y2 = 200 + 160 * Math.sin(angle);
+              return (
+                <line key={`seg-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
+                  stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.4"
+                  className="animate-pulse-glow" style={{ animationDelay: `${i * 0.25}s` }} />
+              );
+            })}
+            {/* Mid ring */}
+            <circle cx="200" cy="200" r="120" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.2"
+              strokeDasharray="8 6" className="animate-arc-spin" />
+            {/* Inner ring with thicker arcs */}
+            <circle cx="200" cy="200" r="90" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.35"
+              strokeDasharray="20 15" className="animate-arc-spin-reverse" />
+            {/* Triangle core */}
+            <polygon points="200,145 245,275 155,275" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.5" filter="url(#glow)" />
+            <polygon points="200,155 238,265 162,265" fill="hsl(var(--primary))" opacity="0.05" />
+            {/* Inner core circle */}
+            <circle cx="200" cy="220" r="35" fill="hsl(var(--primary))" opacity="0.08" stroke="hsl(var(--primary))" strokeWidth="1" filter="url(#glow)" />
+            <circle cx="200" cy="220" r="20" fill="hsl(var(--primary))" opacity="0.15" className="animate-pulse-glow" />
+            <circle cx="200" cy="220" r="8" fill="hsl(var(--primary))" opacity="0.6" className="animate-pulse-glow" />
             {/* Center text */}
-            <text x="200" y="195" textAnchor="middle" fill="hsl(var(--primary))" fontSize="10" fontFamily="JetBrains Mono" opacity="0.6">HRISHIK</text>
-            <text x="200" y="212" textAnchor="middle" fill="hsl(var(--primary))" fontSize="8" fontFamily="JetBrains Mono" opacity="0.4">ECE × AI</text>
-            {/* RF wave */}
-            <path
-              d="M50,200 Q100,150 150,200 T250,200 T350,200"
-              fill="none"
-              stroke="hsl(var(--primary))"
-              strokeWidth="1"
-              opacity="0.2"
-              strokeDasharray="4 4"
-              className="animate-trace"
-            />
+            <text x="200" y="185" textAnchor="middle" fill="hsl(var(--primary))" fontSize="10" fontFamily="JetBrains Mono" opacity="0.6">HRISHIK</text>
+            <text x="200" y="198" textAnchor="middle" fill="hsl(var(--primary))" fontSize="8" fontFamily="JetBrains Mono" opacity="0.4">ECE × AI</text>
+            {/* Energy dots on outer ring */}
+            {Array.from({ length: 8 }).map((_, i) => {
+              const angle = (i * 45) * Math.PI / 180;
+              return (
+                <circle key={`dot-${i}`} cx={200 + 160 * Math.cos(angle)} cy={200 + 160 * Math.sin(angle)}
+                  r="3" fill="hsl(var(--primary))" opacity="0.5"
+                  className="animate-pulse-glow" style={{ animationDelay: `${i * 0.3}s` }} />
+              );
+            })}
           </svg>
         </div>
       </motion.div>
