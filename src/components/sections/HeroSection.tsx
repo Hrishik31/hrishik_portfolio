@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import heroPhoto from "@/assets/hrishik-hero.jpeg";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center pt-16">
@@ -53,9 +54,7 @@ const HeroSection = () => (
           transition={{ delay: 0.65 }}
           className="text-foreground/60 leading-relaxed max-w-lg mb-8"
         >
-          I design systems where signals, silicon, and algorithms work together.
-          From RF measurement labs tuning microwave hardware to deep learning models
-          analyzing semiconductor defects.
+          Hrishik Patel is an electronics engineering student with interests in RF systems, VLSI design, and machine learning for engineering applications. His projects often explore how intelligent algorithms can complement physical electronic systems and improve real-world performance. Beyond academics, he enjoys playing competitive table tennis and watching films, activities that provide balance while strengthening focus, strategic thinking, and creativity.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -71,73 +70,15 @@ const HeroSection = () => (
           </Button>
         </motion.div>
       </div>
-      {/* Right — Arc Reactor Visualization */}
+      {/* Right — Photo */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
         className="hidden md:flex items-center justify-center"
       >
-        <div className="relative w-full aspect-square max-w-md">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-            {/* Outer glow */}
-            <defs>
-              <radialGradient id="arcGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
-                <stop offset="70%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
-                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-              </radialGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-            <circle cx="200" cy="200" r="180" fill="url(#arcGlow)" />
-            {/* Outer ring */}
-            <circle cx="200" cy="200" r="160" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.3" />
-            <circle cx="200" cy="200" r="155" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.15" />
-            {/* Rotating segments outer */}
-            {Array.from({ length: 12 }).map((_, i) => {
-              const angle = (i * 30) * Math.PI / 180;
-              const x1 = 200 + 140 * Math.cos(angle);
-              const y1 = 200 + 140 * Math.sin(angle);
-              const x2 = 200 + 160 * Math.cos(angle);
-              const y2 = 200 + 160 * Math.sin(angle);
-              return (
-                <line key={`seg-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
-                  stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.4"
-                  className="animate-pulse-glow" style={{ animationDelay: `${i * 0.25}s` }} />
-              );
-            })}
-            {/* Mid ring */}
-            <circle cx="200" cy="200" r="120" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0.2"
-              strokeDasharray="8 6" className="animate-arc-spin" />
-            {/* Inner ring with thicker arcs */}
-            <circle cx="200" cy="200" r="90" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" opacity="0.35"
-              strokeDasharray="20 15" className="animate-arc-spin-reverse" />
-            {/* Triangle core */}
-            <polygon points="200,145 245,275 155,275" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity="0.5" filter="url(#glow)" />
-            <polygon points="200,155 238,265 162,265" fill="hsl(var(--primary))" opacity="0.05" />
-            {/* Inner core circle */}
-            <circle cx="200" cy="220" r="35" fill="hsl(var(--primary))" opacity="0.08" stroke="hsl(var(--primary))" strokeWidth="1" filter="url(#glow)" />
-            <circle cx="200" cy="220" r="20" fill="hsl(var(--primary))" opacity="0.15" className="animate-pulse-glow" />
-            <circle cx="200" cy="220" r="8" fill="hsl(var(--primary))" opacity="0.6" className="animate-pulse-glow" />
-            {/* Center text */}
-            <text x="200" y="185" textAnchor="middle" fill="hsl(var(--primary))" fontSize="10" fontFamily="JetBrains Mono" opacity="0.6">HRISHIK</text>
-            <text x="200" y="198" textAnchor="middle" fill="hsl(var(--primary))" fontSize="8" fontFamily="JetBrains Mono" opacity="0.4">ECE × AI</text>
-            {/* Energy dots on outer ring */}
-            {Array.from({ length: 8 }).map((_, i) => {
-              const angle = (i * 45) * Math.PI / 180;
-              return (
-                <circle key={`dot-${i}`} cx={200 + 160 * Math.cos(angle)} cy={200 + 160 * Math.sin(angle)}
-                  r="3" fill="hsl(var(--primary))" opacity="0.5"
-                  className="animate-pulse-glow" style={{ animationDelay: `${i * 0.3}s` }} />
-              );
-            })}
-          </svg>
+        <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/20 glow-primary">
+          <img src={heroPhoto} alt="Hrishik Patel" className="w-full h-full object-cover" />
         </div>
       </motion.div>
     </div>

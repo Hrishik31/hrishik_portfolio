@@ -6,7 +6,7 @@ const nodes = [
   { id: "center", label: "Intelligent\nElectronic Systems", x: 200, y: 200, isCenter: true },
   { id: "rf", label: "RF Systems", x: 80, y: 80, projects: ["Duplexer Tuning", "LoRa Platform"] },
   { id: "vlsi", label: "VLSI Design", x: 320, y: 80, projects: ["16-bit Counter RTL→GDS-II"] },
-  { id: "ml", label: "Machine Learning", x: 350, y: 250, projects: ["Wafer Defect Detection", "MUGGER AI", "Time Series Analysis"] },
+  { id: "ml", label: "Machine Learning", x: 350, y: 250, projects: ["Wafer Defect Detection", "MUGGER AI", "Time Series Forecasting of Geomagnetic Activity"] },
   { id: "sp", label: "Signal Processing", x: 200, y: 350, projects: ["DPSK System", "Guitar Effects"] },
   { id: "emb", label: "Embedded Systems", x: 50, y: 280, projects: ["LoRa Channel Characterization"] },
 ];

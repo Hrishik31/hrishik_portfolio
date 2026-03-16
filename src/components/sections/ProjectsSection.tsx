@@ -80,6 +80,7 @@ const projects: Project[] = [
     outcome: "RSSI/SNR measurement & ML-driven adaptive wireless research.",
     ongoing: true,
     details: "Packet transmission experiments, wireless dataset generation for ML-driven adaptive communication.",
+    image: loraImg,
   },
 ];
 

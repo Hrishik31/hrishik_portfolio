@@ -7,7 +7,7 @@ const education = [
     degree: "B.Tech Electronics & Communication Engineering",
     minor: "Minor: Computational Data Science",
     score: "CGPA: 9.32",
-    period: "2022 – Present",
+    period: "2023 – Present",
   },
   {
     institution: "Higher Secondary (HSC)",
