@@ -9,6 +9,7 @@ import ndtImg from "@/assets/ndt-output.jpeg";
 import tsImg from "@/assets/timeseries-forecast.png";
 import guitarImg from "@/assets/guitar-effects.png";
 import muggerImg from "@/assets/mugger-yolo.png";
+import loraImg from "@/assets/lora-setup.png";
 
 interface Project {
   title: string;
