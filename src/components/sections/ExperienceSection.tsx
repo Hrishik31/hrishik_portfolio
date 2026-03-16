@@ -66,10 +66,7 @@ const ExperienceSection = () => (
           className="flex items-center"
         >
           <div className="rounded-xl overflow-hidden border border-foreground/10 glow-primary">
-            <img src={labPhoto} alt="12ft antenna S-parameter testing at Aatash Norcontrol Lab" className="w-full h-full object-cover" />
-            <div className="p-3 bg-card">
-              <p className="text-xs font-mono text-muted-foreground text-center">12ft antenna S-parameter testing</p>
-            </div>
+            <img src={labPhoto} alt="Internship at Aatash Norcontrol Lab" className="w-full h-full object-cover" />
           </div>
         </motion.div>
       </div>
