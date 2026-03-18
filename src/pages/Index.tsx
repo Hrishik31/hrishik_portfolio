@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import PCBBackground from "@/components/PCBBackground";
+import CustomCursor from "@/components/CustomCursor";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import EducationSection from "@/components/sections/EducationSection";
@@ -18,6 +19,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="relative min-h-screen bg-background">
+    <CustomCursor />
     <PCBBackground />
     <Navbar />
     <HeroSection />
