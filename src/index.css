@@ -143,3 +143,43 @@
 .animate-arc-spin-reverse {
   animation: arc-spin-reverse 25s linear infinite;
 }
+
+/* Cursor click burst */
+.cursor-burst {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: hsl(var(--primary) / 0.5);
+  transform: translate(-50%, -50%);
+  animation: cursor-burst-anim 0.6s ease-out forwards;
+}
+.cursor-burst-ring {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid hsl(var(--primary) / 0.4);
+  transform: translate(-50%, -50%);
+  animation: cursor-ring-anim 0.6s ease-out forwards;
+}
+@keyframes cursor-burst-anim {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+@keyframes cursor-ring-anim {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(8); opacity: 0; }
+}
+
+/* HUD orbital paths */
+@keyframes hud-orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-hud-orbit {
+  animation: hud-orbit 60s linear infinite;
+}
+.animate-hud-orbit-reverse {
+  animation: hud-orbit 45s linear infinite reverse;
+}
