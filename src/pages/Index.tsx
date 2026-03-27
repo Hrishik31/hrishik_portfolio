@@ -34,6 +34,7 @@ const Index = () => (
     <PhilosophySection />
     <FutureGoalsSection />
     <TestimonialsSection />
+    <FellowshipsSection />
     <CertsGoalsSection />
     <ResumeSection />
     <ContactSection />
