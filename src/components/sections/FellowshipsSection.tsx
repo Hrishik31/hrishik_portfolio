@@ -54,18 +54,29 @@ const FellowshipsSection = () => (
             </div>
             <div>
               <h3 className="text-lg font-bold text-foreground mb-1">
-                L&T TECHgium Hackathon
+                L&T TECHgium Hackathon – Virtual PoC Round
               </h3>
-              <span className="font-mono text-xs text-secondary">PoC Round Qualified</span>
+              <span className="font-mono text-xs text-secondary">9th Edition · PoC Round</span>
             </div>
           </div>
-          <p className="text-foreground/60 text-sm leading-relaxed mb-6">
-            Successfully advanced to the <span className="text-foreground font-semibold">Proof of Concept Round</span> in
-            L&T TECHgium, one of India's leading national-level engineering innovation competitions. Competed against
-            top engineering students nationwide.
+          <p className="text-foreground/60 text-sm leading-relaxed mb-4">
+            Successfully completed the <span className="text-foreground font-semibold">Proof of Concept (PoC) round</span> in
+            L&T TECHgium (9th Edition), developing an <span className="text-foreground font-semibold">AI-driven Non-Destructive Testing (NDT) system</span> for
+            automated defect detection in industrial materials. Designed a multi-modal deep learning pipeline integrating
+            U-Net for crack segmentation, EfficientNet for radiographic defect classification, and ConvNeXt for surface
+            inspection, enhanced with GradCAM++ for interpretability.
+          </p>
+          <p className="text-foreground/60 text-sm leading-relaxed mb-4">
+            Collaborated with an external NDT lab to build a custom dataset using real industrial samples and improved
+            model reliability through advanced preprocessing and optimization techniques. Demonstrated a working prototype
+            with strong potential for <span className="text-foreground font-semibold">Industry 4.0 deployment</span>.
+          </p>
+          <p className="text-foreground/50 text-xs leading-relaxed mb-5 italic">
+            Although the project did not advance to the final round, it provided significant hands-on experience in
+            applied AI, computer vision, and real-world engineering problem-solving at a national competition level.
           </p>
           <div className="space-y-3">
-            {["Strong problem-solving ability", "Practical implementation skills", "Engineering design thinking"].map(
+            {["Applied AI & Computer Vision", "Multi-modal deep learning pipeline", "Real-world NDT dataset creation", "Industry 4.0 prototype"].map(
               (item, i) => (
                 <motion.div
                   key={item}
