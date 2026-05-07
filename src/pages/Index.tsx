@@ -13,7 +13,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import PhilosophySection from "@/components/sections/PhilosophySection";
 import FutureGoalsSection from "@/components/sections/FutureGoalsSection";
 import FellowshipsSection from "@/components/sections/FellowshipsSection";
-import CertsGoalsSection from "@/components/sections/CertsGoalsSection";
+import CredentialsSection from "@/components/sections/CredentialsSection";
 import ResumeSection from "@/components/sections/ResumeSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
@@ -35,7 +35,7 @@ const Index = () => (
     <FutureGoalsSection />
     <TestimonialsSection />
     <FellowshipsSection />
-    <CertsGoalsSection />
+    <CredentialsSection />
     <ResumeSection />
     <ContactSection />
     <Footer />
